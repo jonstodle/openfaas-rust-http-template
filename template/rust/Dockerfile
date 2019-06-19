@@ -11,9 +11,9 @@ RUN chmod +x /usr/bin/fwatchdog
 WORKDIR /home/app
 
 RUN apt-get update -qy \
-    && apt-get install -qy curl ca-certificates ${ADDITIONAL_PACKAGE} --no-install-recommends \ 
+    && apt-get install -qy curl ca-certificates ${ADDITIONAL_PACKAGE} --no-install-recommends
 
-    COPY function ./function
+COPY function ./function
 COPY main ./main
 
 RUN cargo build --release --manifest-path ./main/Cargo.toml
