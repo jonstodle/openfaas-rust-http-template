@@ -1,14 +1,10 @@
-# OpenFaaS Rust Template
+# OpenFaaS Rust Http Template
 
-This was featured in a blog post I wrote: https://booyaa.wtf/2018/run-rust-in-openfaas/
+This template uses the new of-watchdog daemon, using the `HTTP` mode.
 
 ## Usage
 
 ```shell
-faas-cli template pull https://github.com/booyaa/openfaas-rust-template
-faas-cli new trustinrust --language rust
+faas-cli template pull https://github.com/jonstodle/openfaas-rust-http-template
+faas-cli new oxidize --language rust-http
 ```
-
-## License
-
-Observing the license used by OpenFaas, so this is licensed under the MIT License
