@@ -1,15 +1,13 @@
+use hyper::Server;
+use hyper::service::service_fn;
+use hyper::rt::Future;
 
-use std::io::{self, Read};
+fn main() {
+    let address = ([127, 0, 0, 1], 3000).into();
 
-extern crate handler;
+    let server = Server::bind(&address)
+        .serve(|| service_fn(handler::handle))
+        .map_err(|e| eprintln!("Server error: {}", e));
 
-fn main() -> io::Result<()> {
-    let mut buffer = String::new();
-    let stdin = io::stdin();
-    let mut handle = stdin.lock();
-
-    handle.read_to_string(&mut buffer)?;
-    
-    println!("{}", handler::handle(buffer));
-    Ok(())
+    hyper::rt::run(server);
 }

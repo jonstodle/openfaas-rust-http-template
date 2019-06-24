@@ -2,5 +2,8 @@
 name = "handler"
 version = "0.1.0"
 authors = ["Mark Sta Ana <booyaabooyaabooyaa@gmail.com>"]
+edition = "2018"
 
 [dependencies]
+hyper = "0.12"
+futures = "0.1"
