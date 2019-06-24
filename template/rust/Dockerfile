@@ -1,4 +1,4 @@
-FROM openfaas/classic-watchdog:0.13.4 as watchdog
+FROM openfaas/of-watchdog:0.5.3 as watchdog
 
 FROM rust:1.35-slim as builder
 
@@ -37,9 +37,7 @@ RUN chown -R app /home/app
 USER app
 
 ENV fprocess="./main"
-
-EXPOSE 8080
-
-HEALTHCHECK --interval=3s CMD [ -e /tmp/.lock ] || exit 1
+ENV mode="http"
+ENV upstream_url="http://127.0.0.1:3000"
 
 CMD ["./fwatchdog"]
